@@ -4,8 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vibration Radio - Pure Energy</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         * {
@@ -16,30 +20,15 @@
 
         body {
             font-family: 'Rajdhani', sans-serif;
-            min-height: 100vh;
+            background: linear-gradient(135deg, #1a0033 0%, #0d001a 50%, #1a0033 100%);
+            color: #fff;
             overflow-x: hidden;
             position: relative;
-            color: #ffffff;
-            background: #0a0014;
+            min-height: 100vh;
         }
 
-        /* Fondo animado con gradientes y efectos */
+        /* Animated Background */
         .background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: 
-                radial-gradient(ellipse at 20% 30%, rgba(176, 0, 255, 0.15) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 70%, rgba(0, 245, 255, 0.15) 0%, transparent 50%),
-                radial-gradient(ellipse at 50% 50%, rgba(255, 0, 255, 0.1) 0%, transparent 50%),
-                linear-gradient(180deg, #0a0014 0%, #1a0033 50%, #0a0014 100%);
-        }
-
-        /* Partículas flotantes */
-        .particles {
             position: fixed;
             top: 0;
             left: 0;
@@ -49,9 +38,27 @@
             overflow: hidden;
         }
 
+        .background::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(176, 0, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(0, 245, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(255, 0, 255, 0.1) 0%, transparent 50%);
+            animation: bgShift 15s ease-in-out infinite;
+        }
+
+        @keyframes bgShift {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-30px, -30px); }
+        }
+
+        /* Particles */
         .particle {
             position: absolute;
-            background: rgba(0, 245, 255, 0.3);
+            background: rgba(255, 255, 255, 0.5);
             border-radius: 50%;
             pointer-events: none;
             animation: float linear infinite;
@@ -74,58 +81,54 @@
             }
         }
 
-        /* Efecto de líneas de escaneo */
+        /* Scan Lines */
         .scanlines {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1;
-            background: linear-gradient(
-                to bottom,
-                rgba(255, 255, 255, 0) 50%,
-                rgba(0, 245, 255, 0.02) 50%
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.15),
+                rgba(0, 0, 0, 0.15) 1px,
+                transparent 1px,
+                transparent 2px
             );
-            background-size: 100% 4px;
             pointer-events: none;
-            animation: scan 8s linear infinite;
+            z-index: 1;
+            opacity: 0.3;
         }
 
-        @keyframes scan {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(4px); }
-        }
-
-        /* Contenedor principal */
+        /* Container */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
             position: relative;
-            z-index: 1;
+            z-index: 2;
         }
 
-        /* Logo y Header */
+        /* Header/Logo */
         .header {
             text-align: center;
-            padding: 40px 20px;
-            margin-bottom: 40px;
+            padding: 60px 20px 40px;
         }
 
         .logo {
             font-family: 'Orbitron', sans-serif;
-            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-size: 4rem;
             font-weight: 900;
-            background: linear-gradient(45deg, #b000ff, #00f5ff, #ff00ff, #00f5ff);
+            background: linear-gradient(45deg, #00f5ff, #b000ff, #ff00ff, #00f5ff);
             background-size: 300% 300%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            text-shadow: 0 0 30px rgba(176, 0, 255, 0.5);
             animation: gradientShift 3s ease infinite;
-            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            letter-spacing: 8px;
             margin-bottom: 10px;
+            text-shadow: 0 0 30px rgba(176, 0, 255, 0.5);
         }
 
         @keyframes gradientShift {
@@ -134,57 +137,93 @@
         }
 
         .slogan {
-            font-family: 'Rajdhani', sans-serif;
-            font-size: clamp(1rem, 3vw, 1.5rem);
+            font-size: 1.2rem;
             font-weight: 300;
             color: #00f5ff;
+            letter-spacing: 4px;
             text-transform: uppercase;
-            letter-spacing: 0.3em;
             animation: pulse 2s ease-in-out infinite;
         }
 
         @keyframes pulse {
-            0%, 100% { opacity: 0.8; }
+            0%, 100% { opacity: 0.7; }
             50% { opacity: 1; }
         }
 
-        /* Reproductor de audio */
-        .player-container {
-            background: rgba(20, 0, 40, 0.8);
-            border: 2px solid rgba(176, 0, 255, 0.3);
-            border-radius: 20px;
-            padding: 30px;
-            margin: 40px auto;
+        /* COMPACT RADIO PLAYER */
+        .radio-player {
+            background: linear-gradient(145deg, #1a0033, #0d001a);
+            border: 3px solid #b000ff;
+            border-radius: 25px;
+            padding: 25px 30px;
             max-width: 500px;
-            backdrop-filter: blur(10px);
+            margin: 40px auto;
             box-shadow: 
-                0 0 40px rgba(176, 0, 255, 0.3),
+                0 0 30px rgba(176, 0, 255, 0.4),
                 inset 0 0 20px rgba(0, 245, 255, 0.1);
+            position: relative;
+            overflow: hidden;
         }
 
-        .player-status {
+        .radio-player::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(176, 0, 255, 0.1) 0%, transparent 70%);
+            animation: radioGlow 4s ease-in-out infinite;
+        }
+
+        @keyframes radioGlow {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(180deg); }
+        }
+
+        /* Radio Header */
+        .radio-header {
             text-align: center;
             margin-bottom: 20px;
-            font-size: 0.9rem;
-            color: #00f5ff;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
+            position: relative;
+            z-index: 1;
         }
 
-        .player-status.loading { color: #ffaa00; }
-        .player-status.playing { color: #00ff88; }
-        .player-status.paused { color: #ffaa00; }
-        .player-status.stopped { color: #ff4444; }
-        .player-status.error { color: #ff0044; }
+        .radio-status {
+            display: inline-block;
+            font-size: 0.85rem;
+            padding: 6px 16px;
+            background: rgba(0, 245, 255, 0.2);
+            border: 1px solid #00f5ff;
+            border-radius: 20px;
+            color: #00f5ff;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
 
-        /* Ecualizador visual */
+        .radio-status.live {
+            background: rgba(0, 255, 100, 0.2);
+            border-color: #00ff64;
+            color: #00ff64;
+            animation: livePulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes livePulse {
+            0%, 100% { box-shadow: 0 0 10px rgba(0, 255, 100, 0.3); }
+            50% { box-shadow: 0 0 20px rgba(0, 255, 100, 0.6); }
+        }
+
+        /* Equalizer */
         .equalizer {
             display: flex;
             justify-content: center;
             align-items: flex-end;
-            height: 60px;
-            gap: 8px;
-            margin-bottom: 25px;
+            gap: 4px;
+            height: 40px;
+            margin: 15px 0;
+            position: relative;
+            z-index: 1;
         }
 
         .eq-bar {
@@ -194,359 +233,458 @@
             transition: height 0.1s ease;
         }
 
-        .eq-bar.active {
-            animation: equalize 0.6s ease-in-out infinite;
-        }
-
-        .eq-bar:nth-child(1) { animation-delay: 0s; }
-        .eq-bar:nth-child(2) { animation-delay: 0.1s; }
-        .eq-bar:nth-child(3) { animation-delay: 0.2s; }
-        .eq-bar:nth-child(4) { animation-delay: 0.1s; }
-        .eq-bar:nth-child(5) { animation-delay: 0s; }
-
-        @keyframes equalize {
-            0%, 100% { height: 15px; }
-            50% { height: 50px; }
-        }
-
-        /* Controles del reproductor */
-        .player-controls {
+        /* Radio Controls */
+        .radio-controls {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 20px;
-            margin-bottom: 25px;
+            gap: 15px;
+            margin: 20px 0;
+            position: relative;
+            z-index: 1;
         }
 
         .control-btn {
-            width: 60px;
-            height: 60px;
+            background: linear-gradient(145deg, #1a0033, #0d001a);
+            border: 2px solid #b000ff;
+            color: #fff;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
-            border: none;
-            background: linear-gradient(135deg, #b000ff, #7000a0);
-            color: white;
-            font-size: 1.5rem;
             cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(176, 0, 255, 0.4);
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(176, 0, 255, 0.3);
         }
 
         .control-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 6px 25px rgba(176, 0, 255, 0.6);
-        }
-
-        .control-btn:active {
-            transform: translateY(-1px);
+            box-shadow: 0 6px 25px rgba(176, 0, 255, 0.5);
+            border-color: #00f5ff;
         }
 
         .control-btn.play-btn {
-            width: 80px;
-            height: 80px;
-            font-size: 2rem;
-            background: linear-gradient(135deg, #00f5ff, #0088cc);
-            box-shadow: 0 4px 20px rgba(0, 245, 255, 0.4);
-        }
-
-        .control-btn.play-btn:hover {
-            box-shadow: 0 6px 30px rgba(0, 245, 255, 0.6);
+            width: 65px;
+            height: 65px;
+            font-size: 1.5rem;
+            background: linear-gradient(145deg, #0066ff, #0044cc);
+            border-color: #00f5ff;
         }
 
         .control-btn.play-btn.playing {
-            animation: playingPulse 1.5s ease-in-out infinite;
+            background: linear-gradient(145deg, #00ff64, #00cc50);
+            border-color: #00ff64;
+            animation: playPulse 2s ease-in-out infinite;
         }
 
-        @keyframes playingPulse {
-            0%, 100% { 
-                box-shadow: 0 4px 20px rgba(0, 245, 255, 0.4);
-            }
-            50% { 
-                box-shadow: 0 4px 40px rgba(0, 245, 255, 0.8);
-            }
+        @keyframes playPulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(0, 255, 100, 0.4); }
+            50% { box-shadow: 0 0 35px rgba(0, 255, 100, 0.7); }
         }
 
         .control-btn.stop-btn {
-            background: linear-gradient(135deg, #ff0066, #cc0044);
-            box-shadow: 0 4px 15px rgba(255, 0, 102, 0.4);
+            background: linear-gradient(145deg, #cc0000, #990000);
+            border-color: #ff0044;
         }
 
         .control-btn.stop-btn:hover {
-            box-shadow: 0 6px 25px rgba(255, 0, 102, 0.6);
+            border-color: #ff0044;
+            box-shadow: 0 6px 25px rgba(255, 0, 68, 0.5);
         }
 
-        /* Control de volumen */
+        /* Volume Control */
         .volume-control {
             display: flex;
             align-items: center;
-            gap: 15px;
-            padding: 0 10px;
+            gap: 12px;
+            margin-top: 15px;
+            position: relative;
+            z-index: 1;
         }
 
         .volume-icon {
             color: #00f5ff;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             min-width: 25px;
         }
 
         .volume-slider {
             flex: 1;
             height: 6px;
-            -webkit-appearance: none;
-            appearance: none;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 3px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
             outline: none;
+            -webkit-appearance: none;
         }
 
         .volume-slider::-webkit-slider-thumb {
             -webkit-appearance: none;
-            appearance: none;
-            width: 18px;
-            height: 18px;
+            width: 16px;
+            height: 16px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #00f5ff, #0088cc);
+            background: linear-gradient(145deg, #00f5ff, #b000ff);
             cursor: pointer;
-            box-shadow: 0 0 10px rgba(0, 245, 255, 0.6);
+            box-shadow: 0 0 10px rgba(0, 245, 255, 0.5);
         }
 
         .volume-slider::-moz-range-thumb {
-            width: 18px;
-            height: 18px;
+            width: 16px;
+            height: 16px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #00f5ff, #0088cc);
+            background: linear-gradient(145deg, #00f5ff, #b000ff);
             cursor: pointer;
             border: none;
-            box-shadow: 0 0 10px rgba(0, 245, 255, 0.6);
+            box-shadow: 0 0 10px rgba(0, 245, 255, 0.5);
         }
 
         .volume-value {
             color: #00f5ff;
             font-size: 0.9rem;
+            font-weight: 600;
             min-width: 40px;
             text-align: right;
         }
 
-        /* Descripción */
-        .description {
-            text-align: center;
+        /* Content Section */
+        .content {
             max-width: 800px;
             margin: 60px auto;
-            padding: 40px;
-            background: rgba(20, 0, 40, 0.6);
-            border-radius: 20px;
-            border: 1px solid rgba(176, 0, 255, 0.2);
-            backdrop-filter: blur(5px);
+            padding: 0 20px;
         }
 
-        .description h2 {
+        .content h2 {
             font-family: 'Orbitron', sans-serif;
-            font-size: clamp(1.8rem, 5vw, 2.5rem);
-            color: #00f5ff;
+            font-size: 2rem;
+            text-align: center;
             margin-bottom: 20px;
-            text-shadow: 0 0 20px rgba(0, 245, 255, 0.5);
+            color: #00f5ff;
+            text-transform: uppercase;
+            letter-spacing: 3px;
         }
 
-        .description p {
-            font-size: clamp(1.1rem, 3vw, 1.3rem);
+        .content p {
+            font-size: 1.2rem;
             line-height: 1.8;
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 30px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 40px;
         }
 
-        /* Características */
+        /* Features */
         .features {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
+            gap: 30px;
+            margin-top: 40px;
         }
 
         .feature {
             text-align: center;
-            padding: 20px;
+            padding: 25px;
             background: rgba(176, 0, 255, 0.1);
+            border: 1px solid rgba(176, 0, 255, 0.3);
             border-radius: 15px;
-            border: 1px solid rgba(0, 245, 255, 0.2);
             transition: all 0.3s ease;
         }
 
         .feature:hover {
-            background: rgba(176, 0, 255, 0.2);
             transform: translateY(-5px);
+            background: rgba(176, 0, 255, 0.2);
+            border-color: #00f5ff;
             box-shadow: 0 10px 30px rgba(0, 245, 255, 0.3);
         }
 
-        .feature-icon {
+        .feature i {
             font-size: 2.5rem;
-            margin-bottom: 10px;
-            background: linear-gradient(45deg, #b000ff, #00f5ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: #00f5ff;
+            margin-bottom: 15px;
         }
 
         .feature h3 {
-            font-family: 'Orbitron', sans-serif;
             font-size: 1.2rem;
-            color: #00f5ff;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
+            color: #fff;
         }
 
         .feature p {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Scroll to Top Button */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(145deg, #b000ff, #8000cc);
+            border: 2px solid #00f5ff;
+            border-radius: 50%;
+            color: #fff;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(176, 0, 255, 0.4);
+        }
+
+        .scroll-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(176, 0, 255, 0.6);
+            background: linear-gradient(145deg, #00f5ff, #0099cc);
         }
 
         /* Footer */
         .footer {
             text-align: center;
-            padding: 40px 20px;
-            margin-top: 60px;
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.5);
-            letter-spacing: 0.1em;
+            padding: 60px 20px 40px;
+            margin-top: 80px;
+            border-top: 1px solid rgba(176, 0, 255, 0.3);
+        }
+
+        /* Social Media Icons */
+        .social-media {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 55px;
+            height: 55px;
+            background: linear-gradient(145deg, #1a0033, #0d001a);
+            border: 2px solid #b000ff;
+            border-radius: 50%;
+            color: #fff;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(176, 0, 255, 0.3);
+        }
+
+        .social-icon:hover {
+            transform: translateY(-5px) scale(1.1);
+            border-color: #00f5ff;
+            box-shadow: 0 8px 25px rgba(0, 245, 255, 0.5);
+        }
+
+        .social-icon.facebook:hover {
+            background: linear-gradient(145deg, #1877f2, #0d5dbf);
+            border-color: #1877f2;
+        }
+
+        .social-icon.whatsapp:hover {
+            background: linear-gradient(145deg, #25d366, #1da851);
+            border-color: #25d366;
+        }
+
+        .footer-text {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 300;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .player-container {
-                padding: 20px;
+            .logo {
+                font-size: 2.5rem;
+                letter-spacing: 4px;
             }
 
-            .player-controls {
-                gap: 15px;
+            .slogan {
+                font-size: 1rem;
+                letter-spacing: 2px;
+            }
+
+            .radio-player {
+                padding: 20px;
+                max-width: 90%;
             }
 
             .control-btn {
-                width: 50px;
-                height: 50px;
-                font-size: 1.2rem;
+                width: 45px;
+                height: 45px;
+                font-size: 1rem;
             }
 
             .control-btn.play-btn {
-                width: 70px;
-                height: 70px;
-                font-size: 1.8rem;
+                width: 55px;
+                height: 55px;
+                font-size: 1.3rem;
             }
 
-            .description {
-                padding: 30px 20px;
+            .content h2 {
+                font-size: 1.5rem;
+            }
+
+            .content p {
+                font-size: 1rem;
             }
 
             .features {
                 grid-template-columns: 1fr;
             }
+
+            .scroll-to-top {
+                width: 45px;
+                height: 45px;
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .social-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Fondo animado -->
-    <div class="background"></div>
-    <div class="particles" id="particles"></div>
-    <div class="scanlines"></div>
+    <!-- Animated Background -->
+    <div class="background">
+        <div class="scanlines"></div>
+    </div>
 
-    <!-- Contenedor principal -->
+    <!-- Container -->
     <div class="container">
-        <!-- Header con logo -->
+        <!-- Header/Logo -->
         <header class="header">
-            <h1 class="logo">VIBRATION RADIO</h1>
+            <h1 class="logo">Vibration Radio</h1>
             <p class="slogan">pure energy</p>
         </header>
 
-        <!-- Reproductor de audio -->
-        <div class="player-container">
-            <div class="player-status" id="playerStatus">Detenido</div>
-            
-            <!-- Ecualizador visual -->
-            <div class="equalizer" id="equalizer">
-                <div class="eq-bar"></div>
-                <div class="eq-bar"></div>
-                <div class="eq-bar"></div>
-                <div class="eq-bar"></div>
-                <div class="eq-bar"></div>
+        <!-- Compact Radio Player -->
+        <div class="radio-player">
+            <div class="radio-header">
+                <div class="radio-status" id="radioStatus">Detenido</div>
             </div>
 
-            <!-- Controles -->
-            <div class="player-controls">
-                <button class="control-btn stop-btn" id="stopBtn" title="Stop">
-                    <i class="fas fa-stop"></i>
-                </button>
+            <!-- Equalizer -->
+            <div class="equalizer" id="equalizer">
+                <div class="eq-bar" style="height: 10px;"></div>
+                <div class="eq-bar" style="height: 20px;"></div>
+                <div class="eq-bar" style="height: 15px;"></div>
+                <div class="eq-bar" style="height: 25px;"></div>
+                <div class="eq-bar" style="height: 18px;"></div>
+            </div>
+
+            <!-- Radio Controls -->
+            <div class="radio-controls">
                 <button class="control-btn play-btn" id="playBtn" title="Play/Pause">
                     <i class="fas fa-play"></i>
                 </button>
+                <button class="control-btn stop-btn" id="stopBtn" title="Stop">
+                    <i class="fas fa-stop"></i>
+                </button>
             </div>
 
-            <!-- Control de volumen -->
+            <!-- Volume Control -->
             <div class="volume-control">
                 <i class="fas fa-volume-up volume-icon"></i>
                 <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="70">
                 <span class="volume-value" id="volumeValue">70%</span>
             </div>
-
-            <!-- Audio element (oculto) -->
-            <audio id="audioPlayer" preload="none"></audio>
         </div>
 
-        <!-- Descripción -->
-        <section class="description">
-            <h2>Música Electrónica 24/7</h2>
+        <!-- Content -->
+        <section class="content">
+            <h2>Sobre Nosotros</h2>
             <p>
-                Vibration Radio es tu destino para la mejor música electrónica sin interrupciones. 
-                Transmitimos las 24 horas del día, los 7 días de la semana, llevando pura energía 
-                directamente a tus oídos. Desde progressive house hasta techno, trance y más, 
-                nuestra selección cuidadosamente curada te mantendrá en movimiento.
+                Bienvenidos a <strong>Vibration Radio</strong>, tu estación de música electrónica las 24 horas del día, 
+                los 7 días de la semana. Transmitimos los mejores beats, los ritmos más vibrantes y la energía 
+                más pura del universo electrónico. Desde house hasta techno, trance y más, estamos aquí para 
+                mantenerte en movimiento.
             </p>
 
+            <!-- Features -->
             <div class="features">
                 <div class="feature">
-                    <div class="feature-icon">🎵</div>
+                    <i class="fas fa-music"></i>
                     <h3>24/7 Non-Stop</h3>
-                    <p>Música ininterrumpida todo el día</p>
+                    <p>Música electrónica sin interrupciones</p>
                 </div>
                 <div class="feature">
-                    <div class="feature-icon">🎧</div>
+                    <i class="fas fa-headphones"></i>
                     <h3>Alta Calidad</h3>
-                    <p>Streaming en calidad premium</p>
+                    <p>Transmisión en la mejor calidad de audio</p>
                 </div>
                 <div class="feature">
-                    <div class="feature-icon">⚡</div>
+                    <i class="fas fa-bolt"></i>
                     <h3>Pure Energy</h3>
-                    <p>La mejor selección electrónica</p>
+                    <p>La energía que necesitas cada día</p>
                 </div>
             </div>
         </section>
-
-        <!-- Footer -->
-        <footer class="footer">
-            <p>Emisora de radio sin fines de lucro</p>
-        </footer>
     </div>
 
+    <!-- Scroll to Top Button -->
+    <button class="scroll-to-top" id="scrollToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <!-- Social Media Icons -->
+        <div class="social-media">
+            <!-- FACEBOOK: Replace '#' with your Facebook page URL -->
+            <a href="#" class="social-icon facebook" title="Facebook" target="_blank">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            
+            <!-- WHATSAPP: Replace '#' with your WhatsApp link -->
+            <!-- Format: https://wa.me/1234567890 (replace with your number including country code) -->
+            <a href="#" class="social-icon whatsapp" title="WhatsApp" target="_blank">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+        </div>
+
+        <p class="footer-text">Emisora de radio sin fines de lucro</p>
+    </footer>
+
+    <!-- Audio Element -->
+    <audio id="audioPlayer" preload="none"></audio>
+
     <script>
-        // ===== CONFIGURACIÓN =====
+        // ===== STREAM URL =====
         const streamURL = 'https://stream.zeno.fm/p04dazwx5zotv';
-        
-        // ===== ELEMENTOS DEL DOM =====
+
+        // ===== DOM ELEMENTS =====
         const audioPlayer = document.getElementById('audioPlayer');
         const playBtn = document.getElementById('playBtn');
         const stopBtn = document.getElementById('stopBtn');
         const volumeSlider = document.getElementById('volumeSlider');
         const volumeValue = document.getElementById('volumeValue');
-        const playerStatus = document.getElementById('playerStatus');
+        const radioStatus = document.getElementById('radioStatus');
         const equalizer = document.getElementById('equalizer');
-        const eqBars = equalizer.querySelectorAll('.eq-bar');
+        const scrollToTopBtn = document.getElementById('scrollToTop');
 
-        // ===== VARIABLES DE ESTADO =====
+        // ===== STATE =====
         let isPlaying = false;
         let isStopped = true;
 
-        // ===== INICIALIZACIÓN =====
+        // ===== INITIAL SETUP =====
         audioPlayer.volume = 0.7;
 
-        // ===== FUNCIÓN PARA RECARGAR STREAM =====
+        // ===== RELOAD STREAM FUNCTION =====
         function reloadStream() {
             audioPlayer.pause();
             audioPlayer.currentTime = 0;
@@ -556,83 +694,82 @@
             audioPlayer.load();
         }
 
-        // ===== FUNCIÓN PARA ACTUALIZAR ESTADO =====
+        // ===== UPDATE STATUS =====
         function updateStatus(status) {
-            playerStatus.className = 'player-status ' + status;
-            
+            radioStatus.classList.remove('live');
             switch(status) {
                 case 'loading':
-                    playerStatus.textContent = 'Conectando...';
+                    radioStatus.textContent = 'Conectando...';
                     break;
                 case 'playing':
-                    playerStatus.textContent = '● EN VIVO';
+                    radioStatus.textContent = 'En Vivo';
+                    radioStatus.classList.add('live');
                     break;
                 case 'paused':
-                    playerStatus.textContent = 'Pausado';
+                    radioStatus.textContent = 'Pausado';
                     break;
                 case 'stopped':
-                    playerStatus.textContent = 'Detenido';
+                    radioStatus.textContent = 'Detenido';
                     break;
                 case 'error':
-                    playerStatus.textContent = 'Error de conexión';
+                    radioStatus.textContent = 'Error';
                     break;
             }
         }
 
-        // ===== FUNCIÓN PARA ECUALIZADOR =====
-        function toggleEqualizer(active) {
-            eqBars.forEach(bar => {
-                if (active) {
-                    bar.classList.add('active');
-                } else {
-                    bar.classList.remove('active');
-                    bar.style.height = '15px';
-                }
+        // ===== EQUALIZER ANIMATION =====
+        function animateEqualizer() {
+            if (!isPlaying) {
+                const bars = equalizer.querySelectorAll('.eq-bar');
+                bars.forEach(bar => bar.style.height = '10px');
+                return;
+            }
+
+            const bars = equalizer.querySelectorAll('.eq-bar');
+            bars.forEach(bar => {
+                const height = Math.random() * 30 + 10;
+                bar.style.height = height + 'px';
             });
+
+            setTimeout(animateEqualizer, 150);
         }
 
         // ===== PLAY/PAUSE BUTTON =====
         playBtn.addEventListener('click', async () => {
             try {
                 if (isPlaying) {
-                    // Pausar
+                    // PAUSE
                     audioPlayer.pause();
                     isPlaying = false;
                     playBtn.innerHTML = '<i class="fas fa-play"></i>';
                     playBtn.classList.remove('playing');
                     updateStatus('paused');
-                    toggleEqualizer(false);
                 } else {
-                    // Si estaba stopped, recargar el stream
+                    // PLAY
                     if (isStopped) {
                         updateStatus('loading');
                         reloadStream();
                         await new Promise(resolve => setTimeout(resolve, 100));
                     }
-                    
-                    // Reproducir
-                    updateStatus('loading');
-                    const playPromise = audioPlayer.play();
-                    
-                    if (playPromise !== undefined) {
-                        playPromise.then(() => {
-                            isPlaying = true;
-                            isStopped = false;
-                            playBtn.innerHTML = '<i class="fas fa-pause"></i>';
-                            playBtn.classList.add('playing');
-                            updateStatus('playing');
-                            toggleEqualizer(true);
-                        }).catch(error => {
-                            console.error('Error al reproducir:', error);
-                            updateStatus('error');
-                            toggleEqualizer(false);
-                        });
-                    }
+
+                    await audioPlayer.play();
+                    isPlaying = true;
+                    isStopped = false;
+                    playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                    playBtn.classList.add('playing');
+                    updateStatus('playing');
+                    animateEqualizer();
                 }
             } catch (error) {
-                console.error('Error:', error);
+                console.error('Error al reproducir:', error);
                 updateStatus('error');
-                toggleEqualizer(false);
+                isPlaying = false;
+                playBtn.innerHTML = '<i class="fas fa-play"></i>';
+                playBtn.classList.remove('playing');
+
+                setTimeout(() => {
+                    updateStatus('stopped');
+                }, 3000);
             }
         });
 
@@ -646,7 +783,6 @@
                 playBtn.innerHTML = '<i class="fas fa-play"></i>';
                 playBtn.classList.remove('playing');
                 updateStatus('stopped');
-                toggleEqualizer(false);
                 audioPlayer.src = '';
                 audioPlayer.load();
             }
@@ -657,7 +793,7 @@
             const volume = e.target.value / 100;
             audioPlayer.volume = volume;
             volumeValue.textContent = e.target.value + '%';
-            
+
             const volumeIcon = document.querySelector('.volume-icon');
             if (volume === 0) {
                 volumeIcon.className = 'fas fa-volume-mute volume-icon';
@@ -668,72 +804,75 @@
             }
         });
 
-        // ===== EVENT LISTENERS DEL AUDIO =====
-        audioPlayer.addEventListener('playing', () => {
-            updateStatus('playing');
-            toggleEqualizer(true);
-        });
-
-        audioPlayer.addEventListener('pause', () => {
-            if (!isStopped) {
-                updateStatus('paused');
-            }
-            toggleEqualizer(false);
-        });
-
+        // ===== AUDIO PLAYER EVENTS =====
         audioPlayer.addEventListener('error', (e) => {
             console.error('Error de audio:', e);
             updateStatus('error');
-            toggleEqualizer(false);
-            
+            isPlaying = false;
+            playBtn.innerHTML = '<i class="fas fa-play"></i>';
+            playBtn.classList.remove('playing');
+
+            setTimeout(() => {
+                if (!isPlaying) {
+                    updateStatus('stopped');
+                }
+            }, 3000);
+        });
+
+        audioPlayer.addEventListener('waiting', () => {
             if (isPlaying) {
-                setTimeout(() => {
-                    console.log('Intentando reconectar...');
-                    reloadStream();
-                    audioPlayer.play().catch(err => console.error('Error al reconectar:', err));
-                }, 3000);
+                updateStatus('loading');
             }
         });
 
-        audioPlayer.addEventListener('stalled', () => {
-            console.log('Stream detenido, recargando...');
+        audioPlayer.addEventListener('playing', () => {
             if (isPlaying) {
-                reloadStream();
-                audioPlayer.play();
+                updateStatus('playing');
             }
         });
 
-        // ===== CREAR PARTÍCULAS =====
+        // ===== SCROLL TO TOP BUTTON =====
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.add('visible');
+            } else {
+                scrollToTopBtn.classList.remove('visible');
+            }
+        });
+
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // ===== CREATE PARTICLES =====
         function createParticles() {
-            const particlesContainer = document.getElementById('particles');
+            const background = document.querySelector('.background');
             const particleCount = 30;
-            
+
             for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
                 particle.className = 'particle';
                 
-                const size = Math.random() * 4 + 2;
+                const size = Math.random() * 3 + 1;
+                const startX = Math.random() * 100;
+                const duration = Math.random() * 10 + 15;
+                const delay = Math.random() * 5;
+
                 particle.style.width = size + 'px';
                 particle.style.height = size + 'px';
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
-                particle.style.animationDelay = Math.random() * 5 + 's';
-                
-                if (Math.random() > 0.5) {
-                    particle.style.background = 'rgba(176, 0, 255, 0.3)';
-                } else {
-                    particle.style.background = 'rgba(255, 0, 255, 0.3)';
-                }
-                
-                particlesContainer.appendChild(particle);
+                particle.style.left = startX + '%';
+                particle.style.animationDuration = duration + 's';
+                particle.style.animationDelay = delay + 's';
+
+                background.appendChild(particle);
             }
         }
 
-        // Inicializar partículas
+        // Initialize particles
         createParticles();
-
-        // ===== PREVENIR REPRODUCCIÓN AUTOMÁTICA =====
-        audioPlayer.autoplay = false;
     </script>
 </body>
 </html>
