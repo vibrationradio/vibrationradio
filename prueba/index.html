@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MargaExpress | Entrega y Distribución de Paquetes</title>
+<meta name="description" content="MargaExpress: entrega y distribución de paquetes rápida, responsable y confiable.">
+
+<!-- Fuentes -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+
+<!-- Iconos -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="images/logo.png">
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="site-header" id="inicio">
+  <div class="container header-inner">
+    <a href="#inicio" class="brand">
+      <img src="images/logo.png" alt="Logo MargaExpress" class="brand-logo">
+    </a>
+
+    <nav class="main-nav" id="main-nav">
+      <a href="#inicio">Inicio</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#galeria">Galería</a>
+      <a href="#rastreo">Rastrear Envío</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+
+    <a href="https://wa.me/59899894035" target="_blank" rel="noopener" class="btn btn-whatsapp header-cta">
+      <i class="fa-brands fa-whatsapp"></i> 099 894 035
+    </a>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="container hero-inner">
+    <div class="hero-text">
+      <span class="pill"><i class="fa-solid fa-truck-fast"></i> Entregas rápidas y confiables</span>
+      <h1>Tu paquete, <span class="text-accent">en las mejores manos</span></h1>
+      <p>En <strong>MargaExpress</strong> nos encargamos de la entrega y distribución de paquetes de forma rápida, responsable y confiable. Somos una empresa en crecimiento, comprometida con brindar un servicio cercano y eficiente a cada cliente.</p>
+      <div class="hero-actions">
+        <a href="#rastreo" class="btn btn-primary"><i class="fa-solid fa-box-open"></i> Rastrear mi envío</a>
+        <a href="https://wa.me/59899894035" target="_blank" rel="noopener" class="btn btn-outline"><i class="fa-brands fa-whatsapp"></i> Escríbenos</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <strong>+100%</strong>
+          <span>Compromiso</span>
+        </div>
+        <div class="stat">
+          <strong>Rápido</strong>
+          <span>Servicio</span>
+        </div>
+        <div class="stat">
+          <strong>Cercano</strong>
+          <span>Trato al cliente</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-media">
+      <img src="images/carousel-1.jpg" alt="Repartidor entregando paquetes" class="hero-img">
+      <div class="hero-badge">
+        <i class="fa-solid fa-shield-halved"></i>
+        <div>
+          <strong>Entrega segura</strong>
+          <span>Cuidamos cada paquete</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-wave">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100" preserveAspectRatio="none">
+      <path d="M0,40 C360,100 1080,0 1440,60 L1440,100 L0,100 Z"></path>
+    </svg>
+  </div>
+</section>
+
+<!-- ===== CARRUSEL ===== -->
+<section class="section carousel-section" id="galeria">
+  <div class="container">
+    <div class="section-title">
+      <span class="section-tag">Galería</span>
+      <h2>Nuestro trabajo día a día</h2>
+      <p>Así llevamos tus paquetes a su destino, con dedicación y responsabilidad.</p>
+    </div>
+
+    <div class="carousel" id="carousel">
+      <div class="carousel-track" id="carouselTrack">
+        <div class="carousel-slide">
+          <img src="images/carousel-1.jpg" alt="Entrega de paquetes">
+          <div class="slide-caption">Entregas puerta a puerta</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="images/carousel-2.jpg" alt="Repartidor en moto">
+          <div class="slide-caption">Reparto ágil en la ciudad</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="images/carousel-3.jpg" alt="Cajas de paquetes listas para envío">
+          <div class="slide-caption">Paquetes listos para viajar</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="images/carousel-4.jpg" alt="Camión de reparto lleno de paquetes">
+          <div class="slide-caption">Distribución organizada</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="images/carousel-5.jpg" alt="Repartidor con caja">
+          <div class="slide-caption">Servicio cercano y confiable</div>
+        </div>
+      </div>
+
+      <button class="carousel-btn prev" id="prevBtn" aria-label="Anterior"><i class="fa-solid fa-chevron-left"></i></button>
+      <button class="carousel-btn next" id="nextBtn" aria-label="Siguiente"><i class="fa-solid fa-chevron-right"></i></button>
+
+      <div class="carousel-dots" id="carouselDots"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== NOSOTROS ===== -->
+<section class="section about-section" id="nosotros">
+  <div class="container about-inner">
+    <div class="about-media">
+      <img src="images/carousel-3.jpg" alt="Paquetes de MargaExpress">
+    </div>
+    <div class="about-text">
+      <span class="section-tag">Sobre nosotros</span>
+      <h2>Comprometidos con tu tranquilidad</h2>
+      <p>En <strong>MargaExpress</strong> nos encargamos de la entrega y distribución de paquetes de forma rápida, responsable y confiable. Somos una empresa en crecimiento, comprometida con brindar un servicio cercano y eficiente a cada cliente.</p>
+      <ul class="about-list">
+        <li><i class="fa-solid fa-check-circle"></i> Entregas rápidas y puntuales</li>
+        <li><i class="fa-solid fa-check-circle"></i> Trato cercano y personalizado</li>
+        <li><i class="fa-solid fa-check-circle"></i> Manejo responsable de tus paquetes</li>
+        <li><i class="fa-solid fa-check-circle"></i> Cobertura y seguimiento en línea</li>
+      </ul>
+      <a href="https://wa.me/59899894035" target="_blank" rel="noopener" class="btn btn-primary">
+        <i class="fa-brands fa-whatsapp"></i> Contáctanos ahora
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICIOS ===== -->
+<section class="section services-section">
+  <div class="container">
+    <div class="section-title">
+      <span class="section-tag">Servicios</span>
+      <h2>¿Qué hacemos por ti?</h2>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon"><i class="fa-solid fa-box"></i></div>
+        <h3>Entrega de paquetes</h3>
+        <p>Recibimos y entregamos tus paquetes de forma segura y a tiempo.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fa-solid fa-route"></i></div>
+        <h3>Distribución</h3>
+        <p>Organizamos rutas eficientes para que tu envío llegue más rápido.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fa-solid fa-magnifying-glass-location"></i></div>
+        <h3>Rastreo de envíos</h3>
+        <p>Consulta el estado de tu paquete en tiempo real desde nuestro sistema.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fa-solid fa-hand-holding-heart"></i></div>
+        <h3>Servicio cercano</h3>
+        <p>Atención personalizada, responsable y pensada para cada cliente.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== RASTREO (vaenvio.com embebido) ===== -->
+<section class="section tracking-section" id="rastreo"style="display: none;">
+  <div class="container">
+    <div class="section-title">
+      <span class="section-tag">Rastreo de envíos</span>
+      <h2>Consulta el estado de tu paquete</h2>
+      <p>Utiliza nuestra plataforma de rastreo para ver en qué va tu envío al instante.</p>
+    </div>
+
+    <div class="tracking-frame-wrapper" id="trackingWrapper">
+      <iframe
+        src="https://www.vaenvio.com"
+        title="Plataforma de rastreo VaEnvio"
+        class="tracking-iframe"
+        id="trackingIframe"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+
+      <div class="tracking-card" id="trackingCard">
+        <div class="tracking-card-icon"><i class="fa-solid fa-box-open"></i></div>
+        <h3>Rastrea tu paquete en VaEnvio</h3>
+        <p>Por seguridad, la plataforma de rastreo no permite mostrarse dentro de otras páginas. Ábrela directamente para consultar el estado de tu envío.</p>
+        <a href="https://www.vaenvio.com" target="_blank" rel="noopener" class="btn btn-primary">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> Ir a www.vaenvio.com
+        </a>
+      </div>
+    </div>
+    <p class="tracking-fallback">
+      ¿No se cargó la plataforma arriba? <a href="https://www.vaenvio.com" target="_blank" rel="noopener">Ábrela en una pestaña nueva <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+    </p>
+  </div>
+</section>
+
+<!-- ===== CONTACTO ===== -->
+<section class="section contact-section" id="contacto">
+  <div class="container contact-inner">
+    <div class="contact-info">
+      <span class="section-tag">Contacto</span>
+      <h2>Hablemos de tu envío</h2>
+      <p>Estamos disponibles para responder tus dudas y coordinar tu entrega.</p>
+
+      <a href="tel:+59899894035" class="contact-item">
+        <i class="fa-solid fa-phone"></i>
+        <div>
+          <strong>Teléfono</strong>
+          <span>099 894 035</span>
+        </div>
+      </a>
+
+      <a href="https://wa.me/59899894035" target="_blank" rel="noopener" class="contact-item">
+        <i class="fa-brands fa-whatsapp"></i>
+        <div>
+          <strong>WhatsApp</strong>
+          <span>099 894 035</span>
+        </div>
+      </a>
+
+      <a href="https://www.instagram.com/margaexpress" target="_blank" rel="noopener" class="contact-item">
+        <i class="fa-brands fa-instagram"></i>
+        <div>
+          <strong>Instagram</strong>
+          <span>@margaexpress</span>
+        </div>
+      </a>
+
+      <div class="contact-item">
+        <i class="fa-solid fa-globe"></i>
+        <div>
+          <strong>Rastreo</strong>
+          <span><a href="https://www.vaenvio.com" target="_blank" rel="noopener">www.vaenvio.com</a></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-card">
+      <h3>¡Envía tu paquete hoy mismo!</h3>
+      <p>Contáctanos por WhatsApp o llamada y coordina tu entrega en minutos.</p>
+      <a href="https://wa.me/59899894035" target="_blank" rel="noopener" class="btn btn-whatsapp btn-block">
+        <i class="fa-brands fa-whatsapp"></i> Chatear por WhatsApp
+      </a>
+      <a href="tel:+59899894035" class="btn btn-outline btn-block btn-llamar">
+        <i class="fa-solid fa-phone"></i> Llamar ahora
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <img src="images/logo.png" alt="Logo MargaExpress" class="footer-logo">
+    </div>
+    <p class="footer-tagline">© 2026 MargaExpress Uruguay. Todos los derechos reservados.</p>
+    <div class="footer-social">
+      <a href="https://www.instagram.com/margaexpress" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://wa.me/59899894035" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+      <a href="tel:+59899894035" aria-label="Teléfono"><i class="fa-solid fa-phone"></i></a>
+    </div>
+    <p class="footer-copy">&copy; <span id="year"></span> MargaExpress. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<a href="https://wa.me/59899894035" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Contactar por WhatsApp">
+  <i class="fa-brands fa-whatsapp"></i>
+</a>
+
+<button class="back-to-top" id="backToTop" aria-label="Subir al inicio de la página">
+  <i class="fa-solid fa-arrow-up"></i>
+</button>
+
+<script src="js/main.js"></script>
+</body>
+</html>
